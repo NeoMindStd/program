@@ -25,9 +25,9 @@ def get_stock_data(tickers):
             info['trailingAnnualDividendYield']
         ])
     return pd.DataFrame(data, columns=[
-        'Ticker', 'Name', 'Exchange', 'Country', 'Market Cap',
-        'Shares Outstanding', 'Trailing P/E', 'Forward P/E',
-        'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth', 'Sector', 'Dividend Yield'
+        '티커', '종목명', '거래소', '국가', '시가총액',
+        '유통 주식수', 'trailingPER (직전 12개월)', 'forwardPER (직후 12개월 추정)',
+        'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth (분기별 수익 성장률)', '업종', '최근1년간 배당 수익률'
     ])
 
 def export_to_excel(data):
@@ -46,9 +46,9 @@ def on_export():
         filter_value = float(per_value.get())
         filter_direction = per_direction.get()
         if filter_direction == 'Below':
-            data = data[data['Trailing P/E'] <= filter_value]
+            data = data[data['trailingPER (직전 12개월)'] <= filter_value]
         else:
-            data = data[data['Trailing P/E'] >= filter_value]
+            data = data[data['trailingPER (직전 12개월)'] >= filter_value]
 
     # ... 같은 방식으로 다른 지표들에 대해 필터링 ...
 
