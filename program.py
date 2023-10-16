@@ -15,7 +15,6 @@ def get_stock_data(tickers):
             info['country'],
             info['marketCap'],
             info['sharesOutstanding'],
-            info['regularMarketPrice'],
             info['trailingPE'],
             info['forwardPE'],
             info['enterpriseToEbitda'],
@@ -23,13 +22,12 @@ def get_stock_data(tickers):
             info['priceToBook'],
             info['earningsQuarterlyGrowth'],
             info['sector'],
-            info['trailingAnnualDividendYield'],
-            info['regularMarketPrice']  # Assume this as price growth (YoY)
+            info['trailingAnnualDividendYield']
         ])
     return pd.DataFrame(data, columns=[
         'Ticker', 'Name', 'Exchange', 'Country', 'Market Cap',
-        'Shares Outstanding', 'Price per Share', 'Trailing P/E', 'Forward P/E',
-        'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth', 'Sector', 'Dividend Yield', 'Price Growth (YoY)'
+        'Shares Outstanding', 'Trailing P/E', 'Forward P/E',
+        'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth', 'Sector', 'Dividend Yield'
     ])
 
 def export_to_excel(data):
