@@ -38,7 +38,7 @@ def export_to_excel(data):
 
 def on_export():
     selected_markets = [listbox.get(idx) for idx in listbox.curselection()]
-    tickers = []  # You would need to obtain a list of tickers for the selected markets
+    tickers = ['AAPL', 'MSFT']  # You would need to obtain a list of tickers for the selected markets
     data = get_stock_data(tickers)
 
     # 필터링
