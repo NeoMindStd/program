@@ -9,29 +9,25 @@ def get_stock_data(tickers):
         stock = yf.Ticker(ticker)
         info = stock.info
         data.append([
-            info.get('symbol', 'N/A'),
-            info.get('longName', 'N/A'),
-            info.get('exchange', 'N/A'),
-            info.get('country', 'N/A'),  # Country (Listing)
-            'N/A',  # Buffett Indicator (Country)
-            info.get('country', 'N/A'),  # Country (Incorporation)
-            'N/A',  # Buffett Indicator (Corporate)
-            info.get('marketCap', 'N/A'),
-            info.get('sharesOutstanding', 'N/A'),
-            info.get('regularMarketPrice', 'N/A'),
-            info.get('trailingPE', 'N/A'),
-            info.get('forwardPE', 'N/A'),
-            info.get('enterpriseToEbitda', 'N/A'),
-            info.get('returnOnEquity', 'N/A'),
-            info.get('priceToBook', 'N/A'),
-            info.get('earningsQuarterlyGrowth', 'N/A'),
-            info.get('sector', 'N/A'),
-            info.get('trailingAnnualDividendYield', 'N/A'),
-            info.get('regularMarketPrice', 'N/A')  # Assume this as price growth (YoY)
+            info['symbol'],
+            info['longName'],
+            info['exchange'],
+            info['country'],
+            info['marketCap'],
+            info['sharesOutstanding'],
+            info['regularMarketPrice'],
+            info['trailingPE'],
+            info['forwardPE'],
+            info['enterpriseToEbitda'],
+            info['returnOnEquity'],
+            info['priceToBook'],
+            info['earningsQuarterlyGrowth'],
+            info['sector'],
+            info['trailingAnnualDividendYield'],
+            info['regularMarketPrice']  # Assume this as price growth (YoY)
         ])
     return pd.DataFrame(data, columns=[
-        'Ticker', 'Name', 'Exchange', 'Country (Listing)', 'Buffett Indicator (Country)',
-        'Country (Incorporation)', 'Buffett Indicator (Corporate)', 'Market Cap',
+        'Ticker', 'Name', 'Exchange', 'Country', 'Market Cap',
         'Shares Outstanding', 'Price per Share', 'Trailing P/E', 'Forward P/E',
         'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth', 'Sector', 'Dividend Yield', 'Price Growth (YoY)'
     ])
