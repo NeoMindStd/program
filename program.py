@@ -10,10 +10,11 @@ def get_stock_data(tickers):
         info = stock.info
         data.append([
             info['symbol'],
-            info['longName'],
+            info['shortName'],
             info['exchange'],
             info['country'],
             info['marketCap'],
+            info['currency'],
             info['sharesOutstanding'],
             info['trailingPE'],
             info['forwardPE'],
@@ -25,7 +26,7 @@ def get_stock_data(tickers):
             info['trailingAnnualDividendYield']
         ])
     return pd.DataFrame(data, columns=[
-        '티커', '종목명', '거래소', '국가', '시가총액',
+        '티커', '종목명', '거래소', '국가', '시가총액', '화폐',
         '유통 주식수', 'trailingPER (직전 12개월)', 'forwardPER (직후 12개월 추정)',
         'EV/EBITDA', 'ROE', 'PBR', 'EPS Growth (분기별 수익 성장률)', '업종', '최근1년간 배당 수익률'
     ])
